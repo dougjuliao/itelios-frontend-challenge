@@ -1,0 +1,81 @@
+/* @Autor: Douglas Julião */
+/* GRID - Responsive 6 columns */
+.grid{
+    width:100%;
+    background:#666;
+    /* float:left; */
+    display: inline-block;
+    position:relative;
+    margin: 0.15%;
+}
+.g-1{ width:99.7% }
+.g-2{ width:49.7% }
+.g-3{ width:33.033%; }
+.g-4{width: 19.489%;}
+.g-5{ width:19.689%; }
+.g-6{ width:16.357%;}
+
+@media screen and (max-width: 700px){
+    .g-4,.g-5,.g-6{width: 94.5%;}
+}
+@media screen and (max-width: 500px){
+    .g-2,.g-3{ width: 99.7%; }
+}
+
+body{ font-family: 'Roboto', sans-serif; }
+.container{ padding:10px; }
+
+/* SHELF - CAROUSEL */
+.shelf{ background:#FFF; }
+.shelf .related{}
+
+.carousel .title{display:inline-block;margin: 3px 0 17px;width: 100%;text-align: center;font-weight: bold;}
+.carousel .products{}
+.item{
+    padding: 2.6%;
+    background: #FFF;
+    border: 1px solid #F1F0F1;
+}
+.item .responsive-img{
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    padding: 40px;
+}
+.item .description{}
+.item .price{}
+.item .price strong{
+    font-size: 20px;
+    margin: 0 5px;
+}
+.item .btn{
+    width: 95%;
+    margin: 0 auto;
+    background:none;
+    border:1px solid #F1F0F1;
+    padding: 20px 2.1%;
+    position:relative;
+    color: #5A6369;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+.item .btn .material-icons{position: absolute;right: 6px;top: 15px;font-size: 32px;}
+.item .add-cart:before{
+    content:'';
+    width: 0;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:#FFF;
+    transition:0.2s;
+}
+.item .add-cart:hover:before{
+    width: 8px;
+    background:#FF6F0F;
+}
+.item .add-cart:hover .material-icons{
+    color:#FF6F0F;
+}
+
