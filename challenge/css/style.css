@@ -27,7 +27,7 @@ body{ font-family: 'Roboto', sans-serif; }
     background-color: #FFF;
     border: 1px solid #F1F0F1;
     cursor:pointer;
-    height: 477px;
+    height: auto;
     transition:0.6s;
 }
 .item .responsive-img{
@@ -36,7 +36,9 @@ body{ font-family: 'Roboto', sans-serif; }
     display: block;
     padding: 40px;
 }
-.item .description{}
+.item .description{
+    height:70px;
+}
 .item .price strong{
     font-size: 20px;
     margin: 0 5px;
@@ -99,7 +101,9 @@ body{ font-family: 'Roboto', sans-serif; }
         width:auto; 
         margin-right:20px; 
     }
+    .item{height: 553px;}
 }
 @media screen and (min-width: 1280px){
     .grid{ width: 19.12%;}
+    .item{height: 510px;}
 }
