@@ -1,25 +1,17 @@
 /* @Autor: Douglas Julião */
-/* GRID - Responsive 6 columns */
+/* GRID - Responsive 4 columns */
 .grid{
-    width:100%;
+    width:99.7%;
     background:#666;
-    /* float:left; */
     display: inline-block;
     position:relative;
     margin: 0.15%;
 }
-.g-1{ width:99.7% }
-.g-2{ width:49.7% }
-.g-3{ width:33.033%; }
-.g-4{width: 19.489%;}
-.g-5{ width:19.689%; }
-.g-6{ width:16.357%;}
-
-@media screen and (max-width: 700px){
-    .g-4,.g-5,.g-6{width: 94.5%;}
+@media screen and (min-width: 800px){
+    .grid{width: 40.5%;}
 }
-@media screen and (max-width: 500px){
-    .g-2,.g-3{ width: 99.7%; }
+@media screen and (min-width: 1280px){
+    .grid{width: 14.489%;}
 }
 
 body{ font-family: 'Roboto', sans-serif; }
@@ -33,8 +25,9 @@ body{ font-family: 'Roboto', sans-serif; }
 .carousel .products{}
 .item{
     padding: 2.6%;
-    background: #FFF;
+    background-color: #FFF;
     border: 1px solid #F1F0F1;
+    cursor:pointer;
 }
 .item .responsive-img{
     width: 70%;
@@ -59,6 +52,9 @@ body{ font-family: 'Roboto', sans-serif; }
     font-weight: bold;
     font-size: 20px;
     text-align: center;
+    visibility: hidden;
+    opacity:0;
+    transition:0.5s;
 }
 .item .btn .material-icons{position: absolute;right: 6px;top: 15px;font-size: 32px;}
 .item .add-cart:before{
@@ -69,13 +65,22 @@ body{ font-family: 'Roboto', sans-serif; }
     top:0;
     left:0;
     background:#FFF;
-    transition:0.2s;
+    transition:0.5s;
 }
-.item .add-cart:hover:before{
+.item:hover{
+    background: #FFFFFF;
+    background: -webkit-linear-gradient(to top,#FFFFFF, #F4F4F4);
+    background: linear-gradient(to top,#FFFFFF, #F4F4F4);
+}
+.item:hover .add-cart{ 
+    visibility: visible; 
+    opacity:1;
+}
+.add-cart:hover:before{
     width: 8px;
     background:#FF6F0F;
 }
-.item .add-cart:hover .material-icons{
+.add-cart:hover .material-icons{
     color:#FF6F0F;
 }
 
