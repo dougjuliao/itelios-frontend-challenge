@@ -7,27 +7,28 @@
     position:relative;
     margin: 0.15%;
 }
-@media screen and (min-width: 800px){
-    .grid{width: 40.5%;}
-}
-@media screen and (min-width: 1280px){
-    .grid{width: 14.489%;}
-}
 
 body{ font-family: 'Roboto', sans-serif; }
 .container{ padding:10px; }
 
 /* SHELF - CAROUSEL */
 .shelf{ background:#FFF; }
-.shelf .related{}
 
-.carousel .title{display:inline-block;margin: 3px 0 17px;width: 100%;text-align: center;font-weight: bold;}
-.carousel .products{}
+.carousel .title{
+    display:inline-block;
+    margin: 3px 0 17px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+.products{ position:relative; }
 .item{
     padding: 2.6%;
     background-color: #FFF;
     border: 1px solid #F1F0F1;
     cursor:pointer;
+    height: 477px;
+    transition:0.6s;
 }
 .item .responsive-img{
     width: 70%;
@@ -36,7 +37,6 @@ body{ font-family: 'Roboto', sans-serif; }
     padding: 40px;
 }
 .item .description{}
-.item .price{}
 .item .price strong{
     font-size: 20px;
     margin: 0 5px;
@@ -56,7 +56,12 @@ body{ font-family: 'Roboto', sans-serif; }
     opacity:0;
     transition:0.5s;
 }
-.item .btn .material-icons{position: absolute;right: 6px;top: 15px;font-size: 32px;}
+.item .btn .material-icons{
+    position: absolute;
+    right: 6px;
+    top: 15px;
+    font-size: 32px;
+}
 .item .add-cart:before{
     content:'';
     width: 0;
@@ -67,12 +72,13 @@ body{ font-family: 'Roboto', sans-serif; }
     background:#FFF;
     transition:0.5s;
 }
-.item:hover{
+.active{
     background: #FFFFFF;
     background: -webkit-linear-gradient(to top,#FFFFFF, #F4F4F4);
     background: linear-gradient(to top,#FFFFFF, #F4F4F4);
+    height:auto;
 }
-.item:hover .add-cart{ 
+.active .add-cart{ 
     visibility: visible; 
     opacity:1;
 }
@@ -83,4 +89,17 @@ body{ font-family: 'Roboto', sans-serif; }
 .add-cart:hover .material-icons{
     color:#FF6F0F;
 }
+.nav-carousel{}
+.nav-carousel span{}
 
+/* RESPONSIVE MEDIAQUERIES */
+@media screen and (min-width: 800px){
+    .grid{width: 44%;}
+    .carousel .title{ 
+        width:auto; 
+        margin-right:20px; 
+    }
+}
+@media screen and (min-width: 1280px){
+    .grid{ width: 19.12%;}
+}
