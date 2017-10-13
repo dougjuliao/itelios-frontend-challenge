@@ -1,3 +1,7 @@
+/*
+    @Autor: Douglas Julião
+    HttpRequest class
+*/
 class HttpRequest {
     constructor(method,url){
         this.url = url;

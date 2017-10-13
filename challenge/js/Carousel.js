@@ -1,8 +1,12 @@
+/*
+    @Autor: Douglas Julião
+    Carousel layout
+*/
 class Carousel{
     constructor(config){ 
-        this.quantity = config.quantity; // Quantity of itens to show
         this.data = config.data;
         this.selector = config.selector;
+        this.height = config.height;
     }
     createHTML(){
         let html = '';
@@ -28,13 +32,13 @@ class Carousel{
         };
 
         html+= productHtml(dt.item,true);
-        html+= '<div class="carousel-container grid-2"><h2 class="title interesting-sm">e talvez se interesse por:</h2>';
+        html+= '<div class="grid-2" style="position:relative;"> <h2 class="title interesting-sm">e talvez se interesse por:</h2> <div class="carousel-container">';
             
         for(let i = 0, len = dt.recommendation.length; i < len; i++){
             html+= productHtml(dt.recommendation[i]);
         }
         html+= `<div class="nav-carousel"></div>`;
-        html+= '</div>';
+        html+= '</div></div>';
         
         
         this.selector.innerHTML = html;
@@ -48,16 +52,17 @@ class Carousel{
         //And fix width of prosucts with px
         let totalWidthContainer = 0;
         let productWidth = 0;
+        let carouselWidth = carousel.scrollWidth;
         products.forEach((item) => {
             productWidth = item.scrollWidth;
 
             item.style.width = productWidth+'px';
             totalWidthContainer += productWidth;
         });
-        carousel.setAttribute('style', `width:${totalWidthContainer+'px'} !important; position: absolute; left: 25.3%; overflow:hidden;`);
+        carousel.setAttribute('style', `width:${totalWidthContainer+'px'} !important; position: absolute; overflow:hidden; height: ${this.height}`);
         
         //navigation
-        this.drawNavigation({ products: products, productWidth: productWidth, totalWidth: totalWidthContainer });
+        this.drawNavigation({ products: products, productWidth: productWidth, totalWidth: totalWidthContainer, carouselWidth: carouselWidth });
     }
     drawNavigation(itens){
         //selectors
@@ -65,14 +70,23 @@ class Carousel{
         const windowWidth = window.outerWidth;
 
         const creatNav = (division) => { // Create itens nav by division between producst width 
-            return itens.totalWidth / division;
+            return itens.carouselWidth + 120;
         };
 
-        let totalItens = windowWidth > 1200 ? 3 : itens.products.length;
-        let navMove = 0.5;
+        let totalItens = windowWidth > 800 ? 5 : itens.products.length;
+
+        if(windowWidth > 800 && windowWidth < 1200){
+            totalItens = 5;
+        }else if(windowWidth > 1200){    
+            totalItens = 3;
+        }else{ 
+            totalItens = itens.products.length;
+        }
+
+        let navMove = -1;
         let navHtml = '';
 
-        for(var i = 0; i < totalItens; i++){
+        for(var i = 0; i <= totalItens; i++){
             navHtml += `<div class="nav ${i === 0 ? 'active' : '' }" data-index="${i}" data-position="${navMove}"></div>`;
             navMove += (creatNav(totalItens) - 147);
         }
@@ -90,12 +104,16 @@ class Carousel{
                     itens.products.forEach((item2) => { item2.style.left = -Number(clickedElement.dataset.position)+'px'; }); //Alter left of all products
                     
                 }
-                //this.classList.add('active');
             });
         });
     }
     init(){
-        this.createHTML();
-        this.drawCarousel();
+        const callFunctions = () => {
+            this.createHTML();
+            this.drawCarousel();
+        };
+        callFunctions();
+        
+        window.onresize = () => { callFunctions() };
     }
 }

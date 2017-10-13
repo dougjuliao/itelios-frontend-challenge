@@ -8,14 +8,11 @@ jsonRequest.request(function(data){
     //CAROUSEL CONF
     const config = {
         selector: document.querySelector('#carousel_shelf'),
-        quantity: 4,
+        height: '753px',
         data: data[0].data
     };
 
     let carousel = new Carousel(config);
     carousel.init();
 
-
-    console.log('DATA: ',data);
-    console.log('SELECTOR: ',carousel);
-})
+});
