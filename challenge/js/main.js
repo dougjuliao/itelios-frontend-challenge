@@ -9,7 +9,7 @@ jsonRequest.request(function(data){
     const config = {
         selector: document.querySelector('#carousel_shelf'),
         quantity: 4,
-        data: data[0].data.recommendation
+        data: data[0].data
     };
 
     let carousel = new Carousel(config);
