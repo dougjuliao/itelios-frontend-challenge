@@ -1,4 +1,4 @@
-let jsonRequest = new HttpRequest('GET','../json/products.json');
+let jsonRequest = new HttpRequest('GET','challenge/json/products.json');
 
 jsonRequest.request(function(data){
     if(!data){
